@@ -1,0 +1,19 @@
+---
+- name: install git 
+  apt:
+    name: git
+    update_cache: yes
+
+- name: clone module source repository from github
+  git: 
+    repo: "https://{{GITHUB_TOKEN}}@github.com/{{ORGANIZATION}}/{{PROJECT}}.git"
+    dest: "/home/{{USER}}/{{PROJECT}}"
+    accept_hostkey: yes
+
+- name: install module into python environment
+  command: make install
+  args: 
+    chdir: "/home/{{USER}}/{{PROJECT}}"
+
+- name: link module run script to /etc/rc
+  command: ln -s `which {{PROJECT}}` /etc/rc

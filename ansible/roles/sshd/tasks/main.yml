@@ -1,0 +1,11 @@
+---
+- name: installs sshd daemon
+  apt:
+    name: openssh-server
+    update_cache: yes
+
+  file:
+    name: create privilege separation directory
+    path: /var/run/sshd
+    state: directory
+    mode: 0755

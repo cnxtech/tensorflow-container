@@ -1,0 +1,6 @@
+---
+- name: add user account
+  user:
+    name: "{{USER}}"
+    password: "{{PASSWORD}}"
+    shell: /bin/bash
