@@ -1,19 +1,11 @@
 version: "2"
 
 services:
-  tensorflow:
+  tfc:
     image: gcr.io/tensorflow/tensorflow
     ports:
       - "8888:8888"
-      - "9999:5000"
+      - "9999:9999"
     command: ['/usr/bin/dumb-init', '/etc/rc']
-    dev_overrides: 
-      command: ['/usr/bin/dumb-init', '/usr/bin/sshd', '-D']
-      ports: 
-        - "2222:22"
 
 registries: {}
-  # Add optional registries used for deployment. For example:
-  #  google:
-  #    url: https://gcr.io
-  #    namespace: my-cool-project-xxxxxx   

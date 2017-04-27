@@ -4,8 +4,8 @@
     name: openssh-server
     update_cache: yes
 
+- name: create privilege separation directory
   file:
-    name: create privilege separation directory
     path: /var/run/sshd
     state: directory
     mode: 0755

@@ -15,5 +15,5 @@
   args: 
     chdir: "/home/{{USER}}/{{PROJECT}}"
 
-- name: link module run script to /etc/rc
-  command: ln -s `which {{PROJECT}}` /etc/rc
+#- name: link module run script to /etc/rc
+#  command: ln -s `which {{PROJECT}}` /etc/rc

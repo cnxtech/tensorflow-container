@@ -12,8 +12,14 @@
       debug: 
         msg: "Project is {{PROJECT}}"
 
-- hosts: tensorflow
+- hosts: tfc
   roles:
     - dumb-init
     - user_account
     - { role: github_python_module, user: "{{USER}}", url: "ssh://git@github.com:rstms/{{PROJECT}}.git" }
+    #- sshd
+  tasks:
+    - name: write rc file
+      shell: "echo '#!/bin/sh\nexec {{PROJECT}}' >/etc/rc"
+    - name: make rc file executable
+      shell: chmod +x /etc/rc
